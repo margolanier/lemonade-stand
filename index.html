@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+    <title>Lemonade Stand</title>
+	<link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-app="LemonadeApp">
+    <h1>Lemonade Stand</h1>
+    
+	<section ng-controller="RestockController">
+		<ul>
+			<li ng-repeat="item in inventory">
+				<h2>{{item.name}}</h2>
+				<p>Available: {{item.amount}}</p>
+				<p>Price: {{item.price}}</p>
+			</li>
+		</ul>
+    </section>
+	
+</body>
+
+</html>
