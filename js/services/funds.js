@@ -4,10 +4,7 @@ module.exports = {
 		let piggybank = 20;
 		
 		return {
-			enoughMoney(costPerItem, numItems) {
-				return piggybank > (costPerItem * numItems);
-			},
-			decreaseFunds(cost) {
+			payExpenses(cost) {
 				piggybank -= cost;
 			},
 			getFunds() {

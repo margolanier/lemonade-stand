@@ -1,18 +1,15 @@
 module.exports = {
 	name: 'RestockInventory',
-	task($scope, Piggybank, LemonadeWarehouse) {
-		$scope.inventory = LemonadeWarehouse.getInventory();
+	task($scope, Piggybank, Supplies) {
+		$scope.inventory = Supplies.getInventory();
 		
-		$scope.buy = function(item, numPurchased) {
-			if (Piggybank.enoughMoney(item.price, numPurchased)) {
+		$scope.buy = function(item, amtPurchased) {
+			if (Piggybank.getFunds() >= item.price * amtPurchased) {
 				// buyItems() updates item amount and returns cost of purchase
-				let cost = LemonadeWarehouse.buyItems(item, numPurchased);
-				console.log(cost);
-				Piggybank.decreaseFunds(cost);
-				let current = Piggybank.getFunds();
-				console.log('updated funds: ' + current);
+				let cost = Supplies.buyItems(item, amtPurchased);
+				Piggybank.payExpenses(cost);
 			} else {
-				alert('not enough money');
+				alert(`You don't have enough money for this purchase.`);
 			}
 		};
 	},

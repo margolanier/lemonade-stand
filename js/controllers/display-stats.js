@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'DisplayStats',
-	task($scope, Piggybank, LemonadeWarehouse) {
+	task($scope, Piggybank, Supplies) {
 		$scope.funds = Piggybank.getFunds();
 		
 		setInterval(function() {

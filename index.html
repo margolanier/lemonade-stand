@@ -20,8 +20,8 @@
 				<p class="item-name">{{item.name}}</p>
 				<p>Available: {{item.amount}}</p>
 				<p>Price per unit: ${{item.price.toFixed(2)}}</p>
-				<input ng-model="numPurchased" type="number" placeholder="amount" min="0" max="{{item.amount}}">
-				<button ng-click="buy(item, numPurchased)">Buy {{numPurchased}}</button>
+				<input ng-model="amtToBuy" type="number" placeholder="amount" min="0">
+				<button ng-click="buy(item, amtToBuy)">Buy {{numPurchased}}</button>
 			</li>
 		</ul>
     </section>
