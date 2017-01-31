@@ -18,11 +18,11 @@ for(let i=0; i<services.length; i++) {
 	app.factory(services[i].name, services[i].task);
 }
 
-/*app.component('snackButton', {
-	templateUrl: 'templates/snack-button.html',
+/*app.component('buyItemsButton', {
+	templateUrl: 'templates/btn-buy-item.html',
 	bindings: {
-		xyz: '<', // <= the type of binding
-		tappedOn: '@',
+		target: '<',
+		onClick: '&',
 	},
-	//controller: 'SnackButtonController',
+	//controller: 'RestockInventory',
 });*/

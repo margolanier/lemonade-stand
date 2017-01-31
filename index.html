@@ -12,6 +12,7 @@
 	
 	<section ng-controller="DisplayStats">
 		<p>Piggybank: ${{funds}}</p>
+		<p ng-repeat="item in inventory">{{item.name}}: {{item.amount}}</p>
 	</section>
     
 	<section ng-controller="RestockInventory">
@@ -21,7 +22,9 @@
 				<p>Available: {{item.amount}}</p>
 				<p>Price per unit: ${{item.price.toFixed(2)}}</p>
 				<input ng-model="amtToBuy" type="number" placeholder="amount" min="0">
-				<button ng-click="buy(item, amtToBuy)">Buy {{numPurchased}}</button>
+				<!--<buy-items-button target="item" on-click="buy(item, amtToBuy)"></buy-items-button>-->
+				<button ng-click="buy(item, amtToBuy)">Buy {{amtToBuy}}</button>
+				
 			</li>
 		</ul>
     </section>

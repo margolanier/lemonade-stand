@@ -9,7 +9,7 @@ module.exports = {
 			},
 			getFunds() {
 				return piggybank;
-			}
+			},
 		};
 	},
 };
