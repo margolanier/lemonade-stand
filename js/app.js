@@ -1,7 +1,8 @@
 const app = angular.module('LemonadeApp', []);
 
 const controllers = [
-	require ('./controllers/lemonade'),
+	require ('./controllers/display-stats'),
+	require ('./controllers/restock'),
 ];
 
 for(let i=0; i<controllers.length; i++) {
@@ -16,3 +17,12 @@ const services = [
 for(let i=0; i<services.length; i++) {
 	app.factory(services[i].name, services[i].task);
 }
+
+/*app.component('snackButton', {
+	templateUrl: 'templates/snack-button.html',
+	bindings: {
+		xyz: '<', // <= the type of binding
+		tappedOn: '@',
+	},
+	//controller: 'SnackButtonController',
+});*/
