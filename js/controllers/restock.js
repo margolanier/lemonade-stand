@@ -14,3 +14,15 @@ module.exports = {
 		};
 	},
 };
+
+/*<section ng-controller="RestockInventory">
+	<ul>
+		<li ng-repeat="item in inventory">
+			<p class="item-name">{{item.name}}</p>
+			<p>Available: {{item.amount}}</p>
+			<p>Price per unit: ${{item.price.toFixed(2)}}</p>
+			<input ng-model="amtToBuy" type="number" placeholder="amount" min="0">
+			<buy-items-button target="item" on-click="buy(item, amtToBuy)"></buy-items-button>
+		</li>
+	</ul>
+</section>*/
