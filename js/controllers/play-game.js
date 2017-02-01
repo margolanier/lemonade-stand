@@ -1,6 +1,9 @@
 module.exports = {
 	name: 'PlayGame',
-	task($scope) {
-		//console.log('play game controller');
+	task($scope, CreateStand) {
+		console.log('playing game now');
+		$scope.stand_id = CreateStand.getId();
+		console.log($scope.stand_id);
+		
 	},
 };
