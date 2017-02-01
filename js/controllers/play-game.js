@@ -10,7 +10,8 @@ module.exports = {
 		Supplies.setId(stand_id);
 		
 		// Get current ingredients
-		Supplies.getIngredients();
-		//let $scope.ingredients = Supplies.getIngredients();
+		Supplies.getIngredients().then(function(updatedItems) {
+			$scope.ingredients = updatedItems;
+		});
 	},
 };

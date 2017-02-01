@@ -1,3 +1,8 @@
 <section ng-controller="PlayGame">
 	<p>lemonade stand things</p>
+	
+	<p>buy more ingredients</p>
+	<div ng-repeat="item in ingredients">
+		{{ item.name }}, count: {{ item.amount}}, price: {{ item.price }}
+	</div>
 </section>

@@ -24,14 +24,13 @@ module.exports = {
 			},
 			
 			getIngredients() {
-				$http.get(`https://blooming-hamlet-70507.herokuapp.com/stand/${stand_id}`).then(function(response) {
+				return $http.get(`https://blooming-hamlet-70507.herokuapp.com/stand/${stand_id}`).then(function(response) {
 					let items = response.data.ingredients;
 					
 					// Update ingredient count with new amounts
 					for(let i=0; i<items.length; i++) {
 						ingredients[i].amount = items[i].value;
 					}
-					console.log(ingredients);
 					return ingredients;
 				});
 			},
