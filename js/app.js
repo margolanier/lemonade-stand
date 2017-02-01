@@ -10,8 +10,7 @@ for(let i=0; i<controllers.length; i++) {
 }
 
 const services = [
-	require ('./services/inventory'),
-	require ('./services/funds'),
+	require ('./service'),
 ];
 
 for(let i=0; i<services.length; i++) {
