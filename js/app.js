@@ -68,6 +68,8 @@ app.component('highScores', {
 const services = [
 	//require ('./services/service'),
 	require ('./services/create-stand'),
+	require ('./services/supplies'),
+	require ('./services/business'),
 ];
 
 for(let i=0; i<services.length; i++) {
