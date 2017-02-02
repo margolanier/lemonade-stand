@@ -36,12 +36,10 @@ module.exports = {
 			},
 			
 			buyItem(item, num) {
-				console.log('buying item');
-				$http.post(`https://blooming-hamlet-70507.herokuapp.com/stand/update?id=${stand_id}`), {
-					property: ingredients[item],
+				console.log(`buying ${num} ${item}`);
+				return $http.post(`https://blooming-hamlet-70507.herokuapp.com/stand/update?id=${stand_id}`, {
+					property: `ingredients.${item}`,
 					add: num,
-				}.then(function(response) {
-					console.log('sdfgs');
 				});
 			},
 		};

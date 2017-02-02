@@ -20,8 +20,6 @@ module.exports = {
 			Business.getStats().then(function(updatedStats) {
 				$scope.stats = updatedStats;
 			});
-			
-			console.log('updating');
 		}
 		updateGame();
 		
@@ -32,8 +30,9 @@ module.exports = {
 		// stuff here to show pop-up form
 		
 		$scope.buy = function(item, num) {
-			Supplies.buyItem(item, num);
-			updateGame();
+			Supplies.buyItem(item.name, num).then(function() {
+				updateGame();
+			});
 		};
 	},
 };
