@@ -34,5 +34,9 @@ module.exports = {
 				updateGame();
 			});
 		};
+		
+		let gameOver = function() {
+			$state.go('high-scores');
+		};
 	},
 };

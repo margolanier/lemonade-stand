@@ -1,14 +1,22 @@
-<section ng-controller="PlayGame">
-	<p>lemonade stand things</p>
+<section ng-controller="PlayGame" class="playGame">
+	<section id="stats" layout="row">
+		<div flex>Day: {{ stats.day }}</div>
+		<div flex>balance: {{ stats.balance }}</div>
+	</section>
 	
-	<p>buy more ingredients</p>
-	<div ng-repeat="item in ingredients">
-		{{ item.name }}, count: {{ item.amount}}, price: {{ item.price }}
-		<input type="number" placeholder="Amount" ng-model="numItems">
-		<button ng-click="buy(item, numItems)">Buy More</button>
-		<button ng-click="buy(item, 1)">Buy One</button>
+	<div layout="row">
+		<section flex flex-gt-xs="40">
+			<h2>Do lemonade things here</h2>
+		</section>
+		
+		<section flex>
+			<p>buy more ingredients</p>
+			<div ng-repeat="item in ingredients">
+				{{ item.name }}, count: {{ item.amount}}, price: {{ item.price }}
+				<input type="number" placeholder="Amount" ng-model="numItems">
+				<button ng-click="buy(item, numItems)">Buy More</button>
+				<button ng-click="buy(item, 1)">Buy One</button>
+			</div>
+		</section>
 	</div>
-	
-	<p>business stats</p>
-	<p>day: {{ stats.day }}, balance: {{ stats.balance }}</p>
 </section>

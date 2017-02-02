@@ -9,21 +9,3 @@ button {
 		opacity: 0.6;
 	}
 }
-
-ul {
-	@include grid-row();
-	
-	li {
-		@include grid-column(12);
-		display: flex;
-		
-		.item-name {
-			font-weight: bold;
-			text-transform: capitalize;
-		}
-		
-		&>p, &>button, &>input {
-			width: 180px;
-		}
-	}
-}

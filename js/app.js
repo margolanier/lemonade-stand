@@ -1,4 +1,4 @@
-const app = angular.module('LemonadeApp', ['ui.router']).run(function ($rootScope, $state, $stateParams) {
+const app = angular.module('LemonadeApp', ['ui.router', 'ngMaterial']).run(function ($rootScope, $state, $stateParams) {
 	$rootScope.$state = $state;
 	$rootScope.$stateParams = $stateParams;
 });
