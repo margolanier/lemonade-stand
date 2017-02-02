@@ -35,8 +35,14 @@ module.exports = {
 				});
 			},
 			
-			buyItem() {
+			buyItem(item, num) {
 				console.log('buying item');
+				$http.post(`https://blooming-hamlet-70507.herokuapp.com/stand/update?id=${stand_id}`), {
+					property: ingredients[item],
+					add: num,
+				}.then(function(response) {
+					console.log('sdfgs');
+				});
 			},
 		};
 	},

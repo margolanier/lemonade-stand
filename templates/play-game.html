@@ -4,6 +4,9 @@
 	<p>buy more ingredients</p>
 	<div ng-repeat="item in ingredients">
 		{{ item.name }}, count: {{ item.amount}}, price: {{ item.price }}
+		<input type="number" placeholder="Amount" ng-model="numItems">
+		<button ng-click="buy(item, numItems)">Buy More</button>
+		<button ng-click="buy(item, 1)">Buy One</button>
 	</div>
 	
 	<p>business stats</p>
