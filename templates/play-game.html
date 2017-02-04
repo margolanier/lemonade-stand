@@ -1,7 +1,7 @@
 <section ng-controller="PlayGame" class="playGame">
 	<section id="stats" layout="row">
 		<div flex>Day: {{ stats.day }}</div>
-		<div flex>balance: {{ stats.balance }}</div>
+		<div flex>balance: {{ stats.balance | asMoney }}</div>
 	</section>
 	
 	<div layout="row">
@@ -12,11 +12,17 @@
 		<section flex>
 			<p>buy more ingredients</p>
 			<div ng-repeat="item in ingredients">
-				{{ item.name }}, count: {{ item.amount}}, price: {{ item.price }}
+				{{ item.name }}, count: {{ item.amount}}, price: {{ item.price | asMoney }}
 				<input type="number" placeholder="Amount" ng-model="numItems">
 				<button ng-click="buy(item, numItems)">Buy More</button>
 				<button ng-click="buy(item, 1)">Buy One</button>
 			</div>
+		</section>
+		
+		<section flex>
+			<h2>Weather Forecast</h2>
+			<p>Temperature: {{ forecast.temperature | asTemp }}<br>
+			Conditions: {{ forecast.condition }}</p>
 		</section>
 	</div>
 </section>

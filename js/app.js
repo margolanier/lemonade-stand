@@ -37,9 +37,6 @@ const controllers = [
 	require ('./controllers/new-game'),
 	require ('./controllers/play-game'),
 	require ('./controllers/high-scores'),
-	
-//	require ('./controllers/display-stats'),
-//	require ('./controllers/restock'),
 ];
 
 for(let i=0; i<controllers.length; i++) {
@@ -64,12 +61,20 @@ app.component('highScores', {
 });
 
 
+// Filters
+const filters = require ('./filters/filters');
+
+for(let i=0; i<filters.length; i++) {
+	app.filter(filters[i].name, filters[i].task);
+}
+
+
 // Services
 const services = [
-	//require ('./services/service'),
 	require ('./services/create-stand'),
 	require ('./services/supplies'),
 	require ('./services/business'),
+	require ('./services/weather'),
 ];
 
 for(let i=0; i<services.length; i++) {

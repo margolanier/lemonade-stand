@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'PlayGame',
-	task($scope, $state, $interval, CreateStand, Supplies, Business) {
+	task($scope, $state, $interval, CreateStand, Supplies, Business, Weather) {
 		
 		// Get stand id and set it for all relevent services
 		let stand_id = CreateStand.getId();
@@ -19,6 +19,14 @@ module.exports = {
 			// Get business stats
 			Business.getStats().then(function(updatedStats) {
 				$scope.stats = updatedStats;
+				
+				if($scope.stats.inBiz === false) {
+					gameOver();
+				}
+			});
+			
+			Weather.getForecast().then(function(tomorrow) {
+				$scope.forecast = tomorrow;
 			});
 		}
 		updateGame();
@@ -27,6 +35,9 @@ module.exports = {
 		$interval(updateGame, 10000);
 		
 		// Watch for end of day
+		/*if (the day changes) {
+			
+		}*/
 		// stuff here to show pop-up form
 		
 		$scope.buy = function(item, num) {
