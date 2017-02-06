@@ -30,13 +30,20 @@ module.exports = {
 					myBiz.inBiz = stats.in_business;
 					myBiz.daysInBiz = stats.day - stats.started_on;
 					myBiz.balance = stats.business.balance;
-					myBiz.cupPrice = stats.business.cupPrice;
+					myBiz.cupPrice = stats.business.price;
 					myBiz.prevDayCustomers = stats.business.yesterday_cups_sold;
 					myBiz.prevDayVisitors = stats.business.yesterday_visitors;
 					myBiz.totalCustomers = stats.business.total_cups_sold;
 					myBiz.totalVisitors = stats.business.total_visitors;
 					
 					return myBiz;
+				});
+			},
+			
+			setCupPrice(price) {
+				return $http.post(`https://blooming-hamlet-70507.herokuapp.com/stand/update?id=${stand_id}`, {
+					property: `business.price`,
+					set: price,
 				});
 			},
 		};

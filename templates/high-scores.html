@@ -1,3 +1,8 @@
 <section ng-controller="HighScores">
 	<p>high scores here</p>
+	<ul>
+		<li ng-repeat="stand in topStands">
+			{{ stand.name }}
+		</li>
+	</ul>
 </section>

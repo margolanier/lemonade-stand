@@ -2,8 +2,13 @@
 	
 	<md-content flex>
 		<img src="../assets/lemonade.png" alt="lemonade">
-		<p>Things to consider:<br>
-		</p>
+		<p>Things to consider:</p>
+		<ul>
+			<li>People buy more lemonade on hot and sunny days.</li>
+			<li>The cheaper you set the cost per cup (compared to competitor stands), the more customers you will get.</li>
+			<li>There is a $3 property tax for using your parents lawn at the end of each business day.</li>
+			<li>All unused ice melts at the end of each day.</li>
+		</ul>
 		
 		<p>Give your lemonade stand a name.</p>
 	</md-content>
@@ -12,7 +17,6 @@
 		<label>Business Name</label>
 		<input type="text" ng-model="businessName">
 		<md-button class="md-primary md-raised" ng-click="start(businessName)">Start Playing</md-button>
-		<md-button class="md-raised" ng-disabled="true">Disabled</md-button>
 	</md-input-container>
 	
 </section>

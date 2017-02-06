@@ -22,7 +22,28 @@
 			<md-card-title>
 				<md-card-title-text>
 					<span class="md-headline">Timer:</span>
+					<span class="md-subhead">Time until End of Day</span>
 					<span class="value">{{ time }}</span>
+				</md-card-title-text>
+			</md-card-title>
+		</md-card>
+		
+		<md-card flex>
+			<md-card-title>
+				<md-card-title-text>
+					<span class="md-headline">Customers:</span>
+					<span class="md-subhead">Yesterday</span>
+					<span class="value">{{ stats.prevDayCustomers }}</span>
+				</md-card-title-text>
+			</md-card-title>
+		</md-card>
+		
+		<md-card flex>
+			<md-card-title>
+				<md-card-title-text>
+					<span class="md-headline">Vistors:</span>
+					<span class="md-subhead">Yesterday</span>
+					<span class="value">{{ stats.prevDayVisitors }}</span>
 				</md-card-title-text>
 			</md-card-title>
 		</md-card>
@@ -40,31 +61,35 @@
 				<li>4 cups ($0.10 per cup)</li>
 			</ul>
 			
-			<h2>Weather Forecast</h2>
+			<h2>Weather forecast</h2>
 			<p>Temperature: {{ forecast.temperature | asTemp }}<br>
 			Conditions: {{ forecast.condition }}</p>
 			
 			<h2>Price per cup</h2>
-			<md-slider-container>
-				<md-slider flex min="0" max="10" ng-model="color.red" id="red-slider" aria-label="cup-price"></md-slider>
-				<md-input-container>
-				<input flex type="number" ng-model="color.red" aria-controls="red-slider" aria-label="cup-price"></md-input-container>
-			</md-slider-container>
+			<p>{{ stats.cupPrice }}</p>
+			<input type="number" placeholder="Amount" ng-model="cupPrice">
+			<md-button class="md-raised md-primary" ng-click="setPrice(cupPrice)">Set cup price</md-button>
+			<md-content layout="row" layout-margin>
+				<md-slider-container flex>
+					<md-slider flex min="0" max="10" step="0.01" ng-model="cupPrice2" id="cup-price" aria-label="cup-price"></md-slider>
+					<md-input-container flex><input flex type="number" ng-model="cupPrice2" aria-controls="cup-price" aria-label="cup-price"></md-input-container>
+				</md-slider-container>
+			</md-content>
 		</md-content>
 		
 		<md-content flex="66">
 			<h2>Supplies</h2>
 			<md-list>
-				<md-subheader>Buy more ingredients</md-subheader>
-				
 				<md-list-item ng-repeat="item in ingredients">
 					<div class="md-list-item-text">
 						<h3>{{ item.name }}</h3>
-						<p>Count: {{ item.amount}}</p>
-						<p>price: {{ item.price | asMoney }}</p>
-						<input type="number" placeholder="Amount" ng-model="numItems">
-						<button ng-click="buy(item, numItems)">Buy More</button>
-						<button ng-click="buy(item, 1)">Buy One</button>
+						<p>Count: {{ item.amount}} in stock</p>
+						<p>Cost: {{ item.price | asMoney }} per {{ item.singular }}</p>
+						<div class="list-action">
+							<input type="number" placeholder="Amount" ng-model="numItems">
+							<md-button class="md-raised md-primary" ng-click="buy(item, numItems)" ng-disabled="stats.balance < (numItems * item.price)">Buy in bulk</md-button>
+							<md-button class="md-raised" ng-click="buy(item, 1)" ng-disabled="stats.balance < item.price">Buy one</md-button>
+						</div>
 					</div>
 					<md-divider ></md-divider>
 				</md-list-item>

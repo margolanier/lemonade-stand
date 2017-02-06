@@ -63,6 +63,11 @@ module.exports = {
 			});
 		};
 		
+		// Set price of one cup
+		$scope.setPrice = function(amount) {
+			Business.setCupPrice(amount);
+		};
+		
 		
 		// Set up timer to display to user
 		// Interval that counts down the time left in current day
