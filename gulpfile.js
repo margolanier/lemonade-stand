@@ -3,7 +3,7 @@ let gulp = require('gulp');
 let sass = require('gulp-sass');
 let browser = require('gulp-browser');
 
-gulp.task('default', ['html', 'css', 'js']);
+gulp.task('default', ['html', 'css', 'js', 'assets']);
 
 gulp.task('html', function() {
 	gulp.src('templates/*.html')
@@ -25,10 +25,16 @@ gulp.task('js', function() {
 		.pipe(gulp.dest('public/'));
 })
 
+gulp.task('assets', function() {
+	return gulp.src('assets/*')
+		.pipe(gulp.dest('public/assets'));
+})
+
 gulp.task('watch', ['default'], function() {
 	gulp.watch('*.html', ['html']);
 	gulp.watch('templates/*.html', ['html']);
 	gulp.watch('scss/*.scss', ['css']);
     gulp.watch('js/*.js', ['js']);
 	gulp.watch('js/*/*.js', ['js']);
+	gulp.watch('assets/*', ['assets']);
 });

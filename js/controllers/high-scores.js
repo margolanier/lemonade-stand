@@ -1,6 +1,13 @@
 module.exports = {
 	name: 'HighScores',
-	task($scope) {
+	tasktask($scope, $state, Scoreboard) {
 		console.log('high scores controller');
+		$scope.topStands = [];
+		console.log($scope.topStands);
+		
+		Scoreboard.getHighScores().then(function(stands) {
+			$scope.topStands = stands;
+			console.log($scope.topStands);
+		});
 	},
 };

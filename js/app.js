@@ -5,7 +5,7 @@ const app = angular.module('LemonadeApp', ['ui.router', 'ngMaterial']).run(funct
 
 
 // Routes
-app.config(function($stateProvider) {
+app.config(function($stateProvider, $mdThemingProvider) {
 	$stateProvider.state({
 		name: 'home',
 		url: '',
@@ -29,6 +29,12 @@ app.config(function($stateProvider) {
 		url: '/scores',
 		component: 'highScores',
 	});
+	
+	
+	// Material Design theme
+	$mdThemingProvider.theme('default')
+    .primaryPalette('purple')
+    .accentPalette('purple');
 });
 
 
@@ -45,20 +51,17 @@ for(let i=0; i<controllers.length; i++) {
 
 
 // Components
-app.component('newGame', {
-	//controller: 'NewGame',
-	templateUrl: 'templates/new-game.html',
-});
+const components = [
+	require('./components/new-game'),
+	require('./components/play-game'),
+	require('./components/high-scores'),
+	//require('./components/stats-card'),
+];
 
-app.component('playGame', {
-	//controller: 'PlayGame',
-	templateUrl: 'templates/play-game.html',
-});
+for(let i=0; i<components.length; i++) {
+	app.component(components[i].name, components[i].details);
+}
 
-app.component('highScores', {
-	//controller: 'HighScores',
-	templateUrl: 'templates/high-scores.html',
-});
 
 
 // Filters
