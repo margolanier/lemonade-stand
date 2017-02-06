@@ -55,7 +55,8 @@ const components = [
 	require('./components/new-game'),
 	require('./components/play-game'),
 	require('./components/high-scores'),
-	//require('./components/stats-card'),
+	require('./components/stats-card'),
+	require('./components/list-ingredient'),
 ];
 
 for(let i=0; i<components.length; i++) {

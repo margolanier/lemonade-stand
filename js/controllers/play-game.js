@@ -92,5 +92,13 @@ module.exports = {
 			}
 		}
 		
+		/*$scope.cards = [
+			{ title: 'Day:', subtitle: '', value: ''},
+			{ title: 'Balance:', subtitle: '', value: ''},
+			{ title: 'Time remaining', subtitle: '', value: ''},
+			{ title: 'Total customers', subtitle: '', value: ''},
+			{ title: 'Total visitors', subtitle: '', value: ''},
+		];*/
+		
 	},
 };

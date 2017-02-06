@@ -1,0 +1,11 @@
+<div class="md-list-item-text">
+	<h3>{{ $ctrl.supply.name }}</h3>
+	<p>Count: {{ $ctrl.supply.amount}} in stock</p>
+	<p>Cost: {{ $ctrl.supply.price | asMoney }} per {{ $ctrl.supply.singular }}</p>
+	<div class="list-action">
+		<input type="number" placeholder="Amount" ng-model="numItems">
+		<md-button class="md-raised md-primary" ng-click="$ctrl.buying({ item: $ctrl.supply }, numItems)" ng-disabled="$ctrl.bal < (numItems * $ctrl.supply.price)">Buy in bulk</md-button>
+		<md-button class="md-raised" ng-click="$ctrl.buying({ item: $ctrl.supply }, 1)" ng-disabled="$ctrl.bal < $ctrl.supply.price">Buy one</md-button>
+	</div>
+</div>
+<md-divider ></md-divider>

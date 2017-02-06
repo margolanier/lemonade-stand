@@ -1,22 +1,28 @@
-<section ng-controller="NewGame" layout-"column" layout-margin>
+<section ng-controller="NewGame" layout="row" layout-margin>
 	
 	<md-content flex>
+		<h2>Name your lemonade stand.</h2>
 		<img src="../assets/lemonade.png" alt="lemonade">
-		<p>Things to consider:</p>
-		<ul>
-			<li>People buy more lemonade on hot and sunny days.</li>
-			<li>The cheaper you set the cost per cup (compared to competitor stands), the more customers you will get.</li>
-			<li>There is a $3 property tax for using your parents lawn at the end of each business day.</li>
-			<li>All unused ice melts at the end of each day.</li>
-		</ul>
 		
-		<p>Give your lemonade stand a name.</p>
+		<md-input-container id="new-stand-form">
+			<label>Business Name</label>
+			<input type="text" ng-model="businessName">
+			<md-button class="md-primary md-raised" ng-click="start(businessName)">Start Playing</md-button>
+		</md-input-container>
 	</md-content>
 	
-	<md-input-container flex>
-		<label>Business Name</label>
-		<input type="text" ng-model="businessName">
-		<md-button class="md-primary md-raised" ng-click="start(businessName)">Start Playing</md-button>
-	</md-input-container>
+	
+	<md-content flex>
+		<h2>Business Considerations:</h2>
+		<ul>
+			<li>Each cup of lemonade requires four ingredients.</li>
+			<li>You can only restock supplies for the upcoming day. Plan ahead.</li>
+			<li>You must maintain a balance above $0 to stay in business.</li>
+			<li>People buy more lemonade on hot and sunny days. Watch the weather forecast.</li>
+			<li>The cheaper you set the cost per cup (compared to competitor stands), the more customers you will earn.</li>
+			<li>There is a $3 property tax at the end of each business day for using your parents' lawn.</li>
+			<li>All unused ice melts at the end of each day.</li>
+		</ul>
+	</md-content>
 	
 </section>

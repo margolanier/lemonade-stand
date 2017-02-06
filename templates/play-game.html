@@ -1,9 +1,12 @@
 <section ng-controller="PlayGame">
-	<section id="stats" layout="row" layout-margin>
+	<section id="game-stats" layout="row" layout-margin>
+		<!--<stats-card stand="stats" title="Day:" subtitle="Total days in business: {{ stats.daysInBiz }}" value="{{ stats.day }}"></stats-card>-->
+		
 		<md-card flex>
 			<md-card-title>
 				<md-card-title-text>
 					<span class="md-headline">Day:</span>
+					<span class="md-subhead">Total days in business: {{ stats.daysInBiz }}</span>
 					<span class="value">{{ stats.day }}</span>
 				</md-card-title-text>
 			</md-card-title>
@@ -13,6 +16,7 @@
 			<md-card-title>
 				<md-card-title-text>
 					<span class="md-headline">Balance:</span>
+					<span class="md-subhead">Amount in piggybank</span>
 					<span class="value">{{ stats.balance | asMoney }}</span>
 				</md-card-title-text>
 			</md-card-title>
@@ -21,8 +25,8 @@
 		<md-card flex>
 			<md-card-title>
 				<md-card-title-text>
-					<span class="md-headline">Timer:</span>
-					<span class="md-subhead">Time until End of Day</span>
+					<span class="md-headline">Time remaining:</span>
+					<span class="md-subhead">2 min. each day to restock</span>
 					<span class="value">{{ time }}</span>
 				</md-card-title-text>
 			</md-card-title>
@@ -31,9 +35,9 @@
 		<md-card flex>
 			<md-card-title>
 				<md-card-title-text>
-					<span class="md-headline">Customers:</span>
-					<span class="md-subhead">Yesterday</span>
-					<span class="value">{{ stats.prevDayCustomers }}</span>
+					<span class="md-headline">Total Customers:</span>
+					<span class="md-subhead">Customers yesterday: {{ stats.prevDayCustomers }}</span>
+					<span class="value">{{ stats.totalCustomers }}</span>
 				</md-card-title-text>
 			</md-card-title>
 		</md-card>
@@ -41,9 +45,9 @@
 		<md-card flex>
 			<md-card-title>
 				<md-card-title-text>
-					<span class="md-headline">Vistors:</span>
-					<span class="md-subhead">Yesterday</span>
-					<span class="value">{{ stats.prevDayVisitors }}</span>
+					<span class="md-headline">Total Visitors:</span>
+					<span class="md-subhead">Vistors yesterday: {{ stats.prevDayVisitors }}</span>
+					<span class="value">{{ stats.totalVisitors }}</span>
 				</md-card-title-text>
 			</md-card-title>
 		</md-card>
@@ -81,17 +85,7 @@
 			<h2>Supplies</h2>
 			<md-list>
 				<md-list-item ng-repeat="item in ingredients">
-					<div class="md-list-item-text">
-						<h3>{{ item.name }}</h3>
-						<p>Count: {{ item.amount}} in stock</p>
-						<p>Cost: {{ item.price | asMoney }} per {{ item.singular }}</p>
-						<div class="list-action">
-							<input type="number" placeholder="Amount" ng-model="numItems">
-							<md-button class="md-raised md-primary" ng-click="buy(item, numItems)" ng-disabled="stats.balance < (numItems * item.price)">Buy in bulk</md-button>
-							<md-button class="md-raised" ng-click="buy(item, 1)" ng-disabled="stats.balance < item.price">Buy one</md-button>
-						</div>
-					</div>
-					<md-divider ></md-divider>
+					<list-ingredient supply="item" buying="buy(item)" bal="stats.balance"></list-ingredient>
 				</md-list-item>
 			</md-list>
 		</md-content>

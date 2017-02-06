@@ -1,10 +1,12 @@
 module.exports = {
 	name: 'statsCard',
 	details: {
-		templateUrl: 'templates/play-game.html',
+		templateUrl: 'templates/stats-card.html',
 		bindings: {
-			person: '<', // read-only
-			whenIClick: '&', // function
+			stand: '<',
+			/*title: '<',
+			subtitle: '<',
+			value: '<',*/
 		},
 	},
 };
