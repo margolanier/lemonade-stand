@@ -10,7 +10,11 @@ module.exports = {
 		Supplies.setId(stand_id);
 		Business.setId(stand_id);
 		
-		let updateGame = function() {
+		
+		// Define tasks for every time the game info is updated
+		// Watch for changes in balance, day, and 'in business' status
+		function updateGame() {
+			
 			// Get current ingredients
 			Supplies.getIngredients().then(function(updatedItems) {
 				$scope.ingredients = updatedItems;
@@ -20,34 +24,68 @@ module.exports = {
 			Business.getStats().then(function(updatedStats) {
 				$scope.stats = updatedStats;
 				
+				// Watch for 'out of business' status => game over
 				if($scope.stats.inBiz === false) {
-					gameOver();
+					//gameOver();
+					$state.go('new-game');
 				}
 			});
 			
+			// Get weather forecast
 			Weather.getForecast().then(function(tomorrow) {
 				$scope.forecast = tomorrow;
 			});
 		}
-		updateGame();
 		
-		// Set interval to update stats every 10 sec
-		$interval(updateGame, 10000);
+		// Set interval to update stats
+		let updatePromise;
+		function startUpdating() {
+			updatePromise = $interval(updateGame, 1000);
+		};
 		
-		// Watch for end of day
-		/*if (the day changes) {
-			
-		}*/
-		// stuff here to show pop-up form
+		function stopUpdating() {
+			$interval.cancel(updatePromise);
+		};
 		
+		function gameOver() {
+			console.log('game over');
+			$interval.cancel(stopUpdating);
+			$state.go('high-scores');
+		}
+		
+		startUpdating();
+		
+		
+		// Buy more supplies
 		$scope.buy = function(item, num) {
 			Supplies.buyItem(item.name, num).then(function() {
 				updateGame();
 			});
 		};
 		
-		let gameOver = function() {
-			$state.go('high-scores');
+		
+		// Set up timer to display to user
+		// Interval that counts down the time left in current day
+		let timerPromise;
+		$scope.time = 120;
+		
+		function startTimer() {
+			timerPromise = $interval(countDown, 1000);
 		};
+		
+		function stopTimer() {
+			$interval.cancel(timerPromise);
+		};
+		
+		startTimer();
+		
+		function countDown() {
+			if ($scope.time > 0) {
+				$scope.time--;
+			} else {
+				stopTimer();
+			}
+		}
+		
 	},
 };
