@@ -1,5 +1,18 @@
-<section ng-controller="NewGame">
-	<p>Name your lemonade stand.</p>
-	<input type="text" placeholder="The Beyhive" ng-model="businessName">
-	<button ng-click="start(businessName)">Start Playing</button>
+<section ng-controller="NewGame" layout-"column" layout-margin>
+	
+	<md-content flex>
+		<img src="../assets/lemonade.png" alt="lemonade">
+		<p>Things to consider:<br>
+		</p>
+		
+		<p>Give your lemonade stand a name.</p>
+	</md-content>
+	
+	<md-input-container flex>
+		<label>Business Name</label>
+		<input type="text" ng-model="businessName">
+		<md-button class="md-primary md-raised" ng-click="start(businessName)">Start Playing</md-button>
+		<md-button class="md-raised" ng-disabled="true">Disabled</md-button>
+	</md-input-container>
+	
 </section>

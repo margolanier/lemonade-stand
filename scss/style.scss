@@ -1,11 +1,19 @@
-@import '../node_modules/foundation-sites/scss/foundation';
+//@import '../node_modules/foundation-sites/scss/foundation';
 
-@include foundation-global-styles;
-@include foundation-grid;
+$font-color: #444444;
+$yellow: #FFF600;
 
-button {
-	@include button;
-	&:disabled {
-		opacity: 0.6;
+body {
+	color: $font-color;
+}
+
+header {
+	text-align: center;
+}
+
+h1 {
+	.lemonade {
+		color: $yellow;
+		text-shadow: -1px 0 $font-color, 0 1px $font-color, 1px 0 $font-color, 0 -1px $font-color;
 	}
 }
