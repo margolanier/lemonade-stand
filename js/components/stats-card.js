@@ -3,10 +3,7 @@ module.exports = {
 	details: {
 		templateUrl: 'templates/stats-card.html',
 		bindings: {
-			stand: '<',
-			/*title: '<',
-			subtitle: '<',
-			value: '<',*/
+			stats: '<',
 		},
 	},
 };

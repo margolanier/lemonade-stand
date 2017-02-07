@@ -24,6 +24,35 @@ module.exports = {
 			Business.getStats().then(function(updatedStats) {
 				$scope.stats = updatedStats;
 				
+				// Game info that binds to card component
+				$scope.cards = [
+					{
+						title: 'Day:',
+						subtitle: 'Total days in business: ' + $scope.stats.daysInBiz,
+						value: $scope.stats.day,
+					},
+					{
+						title: 'Balance:',
+						subtitle: 'Amount in piggybank',
+						value: $scope.stats.balance,
+					},
+					{
+						title: 'Time remaining',
+						subtitle: '2 min. each day to restock',
+						value: $scope.time,
+					},
+					{
+						title: 'Total Customers:',
+						subtitle: 'Customers yesterday: ' + $scope.stats.prevDayCustomers,
+						value: $scope.stats.totalCustomers,
+					},
+					{
+						title: 'Total Visitors:',
+						subtitle: 'Vistors yesterday: ' + $scope.stats.prevDayVisitors,
+						value: $scope.stats.totalVisitors,
+					},
+				];
+				
 				// Watch for 'out of business' status => game over
 				if($scope.stats.inBiz === false) {
 					//gameOver();
@@ -35,6 +64,7 @@ module.exports = {
 			Weather.getForecast().then(function(tomorrow) {
 				$scope.forecast = tomorrow;
 			});
+			
 		}
 		
 		// Set interval to update stats
@@ -91,14 +121,6 @@ module.exports = {
 				stopTimer();
 			}
 		}
-		
-		/*$scope.cards = [
-			{ title: 'Day:', subtitle: '', value: ''},
-			{ title: 'Balance:', subtitle: '', value: ''},
-			{ title: 'Time remaining', subtitle: '', value: ''},
-			{ title: 'Total customers', subtitle: '', value: ''},
-			{ title: 'Total visitors', subtitle: '', value: ''},
-		];*/
 		
 	},
 };
